@@ -1,0 +1,20 @@
+{
+  env: {
+    dev: {
+      plugins: ["react-hot-loader/babel"],
+    },
+    test: {
+      presets: [["es2015", { "modules": "commonjs" }]],
+    },
+  },
+  plugins: [
+    "syntax-trailing-function-commas",
+    ["module-resolver", {
+      "root": ["./src/lib", "./src/modules"],
+      "alias": {
+        "api": "./src/api",
+      },
+    }],
+  ],
+  presets: [["es2015", { "modules": false }], "react", "stage-0"],
+}
