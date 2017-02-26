@@ -21,6 +21,15 @@ const rebass = {
 };
 
 export default withContext(
-  { rebass: PropTypes.object },
-  () => ({ rebass }),
+  { rebass: PropTypes.object, reflexbox: PropTypes.object },
+  () => ({
+    rebass,
+    reflexbox: {
+      breakpoints: {
+        sm: '(min-width: 30em)',
+        md: '(min-width: 48em)',
+        lg: '(min-width: 57.75em)',
+      },
+    },
+  }),
 );

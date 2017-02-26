@@ -1,15 +1,15 @@
-import R from 'ramda';
 import { takeLatest, call, select } from 'redux-saga/effects';
 import { submitIssue } from 'api';
 import { REQUEST } from 'request-helpers/actions';
 import { requestSequence } from 'request-helpers/sagas';
 import { FORM } from 'common/actions';
+import { tokenSelector } from 'common/selectors';
 
 const goToUrl = (url) => { window.location.href = url; };
 
 function* submit(action) {
   const { payload: { title, type, platform, description } } = action;
-  const token = yield select(R.path(['userInfo', 'token']));
+  const token = yield select(tokenSelector);
 
   const { type: actionType, payload: { html_url: issueUrl } } = yield call(
     requestSequence,

@@ -31,6 +31,7 @@
     "redux-form": "^6.5.0",
     "redux-logger": "^2.8.1",
     "redux-saga": "^0.14.3",
+    "reflexbox": "^2.2.3",
     "reselect": "^2.5.4",
     "throng": "^4.0.0"
   },
