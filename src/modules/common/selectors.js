@@ -6,6 +6,7 @@ export const erroredRequestsSelector = R.prop('erroredRequests');
 export const ongoingRequestsSelector = R.prop('ongoingRequests');
 
 export const userInfoSelector = R.prop('userInfo');
+export const tokenSelector = R.path(['userInfo', 'token']);
 export const serverValuesSelector = R.prop('serverValues');
 export const formValuesSelector = R.pathOr({}, ['form', 'issue', 'values']);
 export const isIssuePostedSelector = R.prop('isIssuePosted');
