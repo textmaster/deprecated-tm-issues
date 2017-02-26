@@ -32,3 +32,8 @@ export const getUserInfo = token => getUser(token)
     hasPermission,
     token,
   }));
+
+export const getRelatedIssues = (token, title) => githubRequest(
+  token,
+  `search/issues?q=${title}+repo:${OWNER}/${REPO}&sort=created&order=asc`,
+).then(R.prop('items'));
