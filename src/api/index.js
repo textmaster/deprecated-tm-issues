@@ -34,7 +34,7 @@ export const getUserInfo = token => getUser(token)
 
 export const getRelatedIssues = (token, title) => githubRequest(
   token,
-  `search/issues?q=${title}+repo:${OWNER}/${REPO}&sort=created&order=asc`,
+  `search/issues?q=${encodeURI(title)}+repo:${OWNER}/${REPO}&sort=created&order=asc`,
 ).then(R.pipe(
   R.prop('items'),
   R.map(issue => ({
