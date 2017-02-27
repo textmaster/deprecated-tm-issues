@@ -14,9 +14,11 @@ const ButtonsGroup = ({
 }) =>
   <Container {...otherProps}>
     {options.map((option, idx) => {
+      const key = option.key || option;
+      const displayValue = option.displayValue || option;
       const isFirst = idx === 0;
       const isLast = idx === options.length - 1;
-      const isSelected = value === option;
+      const isSelected = value === key;
       const rounded = !isFirst && !isLast ? false :
                       isFirst && isLast ? true :
                       isFirst ? 'left' : 'right';
@@ -27,14 +29,14 @@ const ButtonsGroup = ({
           color: 'primary',
           rounded,
           style,
-          onClick: () => !disabled && onChange(option),
+          onClick: () => !disabled && onChange(key),
         },
         isSelected ? selectedProps : {},
       );
 
       const Component = isSelected ? Button : ButtonOutline;
 
-      return <Component key={option} {...props} >{option}</Component>;
+      return <Component key={key} {...props} >{displayValue}</Component>;
     })}
   </Container>;
 
@@ -44,7 +46,13 @@ ButtonsGroup.propTypes = {
     value: PropTypes.string,
   }).isRequired,
   originalProps: PropTypes.shape({
-    options: PropTypes.arrayOf(PropTypes.string).isRequired,
+    options: PropTypes.oneOf([
+      PropTypes.arrayOf(PropTypes.string).isRequired,
+      PropTypes.arrayOf(PropTypes.shape({
+        key: PropTypes.string.isRequired,
+        displayValue: PropTypes.string.isRequired,
+      })),
+    ]),
     disabled: PropTypes.bool,
   }).isRequired,
 };
