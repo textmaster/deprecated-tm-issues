@@ -23,7 +23,7 @@ function* titleChangesWatcher() {
         meta.form === 'issue' && meta.field === 'title' && payload.length > 0
     ),
     pullRelatedIssues,
-    200,
+    500,
     R.always('form.title'),
   );
 }
