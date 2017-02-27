@@ -15,9 +15,8 @@ export const isCollaborator = (token, login) =>
 export const submitIssue = (token, title, type, platform, description) =>
   githubRequest(token, `repos/${OWNER}/${REPO}/issues`, 'POST', {
     title,
+    labels: [type],
     body: `
-**Type**: ${type}
-
 **Platform**: ${platform}
 
 **Description**: ${description}`,
