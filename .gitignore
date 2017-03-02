@@ -2,3 +2,4 @@ server/index.html
 node_modules
 public/dist
 .env
+.yarn-cache.tgz

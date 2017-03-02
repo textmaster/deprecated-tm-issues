@@ -61,10 +61,12 @@
   },
   "scripts": {
     "build": "NODE_ENV=production webpack",
+    "build-and-run-prod": "npm run build && npm run prod-server",
+    "start": "npm run webpack-server | npm run dev-server",
     "heroku-postbuild": "npm run build",
-    "webpack-server": "NODE_ENV=development PORT=4567 DEV_SVR_PORT=5678 webpack-dev-server",
-    "dev-server": "NODE_ENV=development PORT=4567 DEV_SVR_PORT=5678 node ./server/node-server",
-    "prod-server": "NODE_ENV=production PORT=4567 node ./server/node-server",
+    "webpack-server": "NODE_ENV=development webpack-dev-server",
+    "dev-server": "NODE_ENV=development node ./server/node-server",
+    "prod-server": "NODE_ENV=production node ./server/node-server",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Josep M Sobrepere",

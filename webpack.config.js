@@ -34,10 +34,10 @@ const prodPlugins = [
   }),
   new HtmlWebPackPlugin({
     inject: false,
-    filename: '../../server/index.prod.ejs',
+    filename: path.join(__dirname, './server/index.prod.ejs'),
     initialState: '<%= initialState %>',
     filesPrefix: '<%= filesPrefix %>',
-    template: './src/index.ejs',
+    template: path.join(__dirname, './src/index.ejs'),
   }),
 ];
 
