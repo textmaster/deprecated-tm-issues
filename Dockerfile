@@ -1,12 +1,14 @@
-FROM node:7.7-slim
-
-# Global install yarn package manager
-RUN apt-get update && apt-get install -y curl apt-transport-https && \
-    curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add - && \
-    echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list && \
-    apt-get update && apt-get install -y yarn
+FROM mhart/alpine-node:base-7.7
 
 WORKDIR /opt/app
+
+# Global install yarn package manager
+ADD https://yarnpkg.com/latest.tar.gz /opt/yarn.tar.gz
+RUN yarnDirectory=/opt/yarn && \
+    mkdir -p "$yarnDirectory" && \
+    tar -xzf /opt/yarn.tar.gz -C "$yarnDirectory" && \
+    ln -s "$yarnDirectory/dist/bin/yarn" /usr/local/bin/ && \
+    rm /opt/yarn.tar.gz
 
 ADD package.json yarn.lock /tmp/
 
