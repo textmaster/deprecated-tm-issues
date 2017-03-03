@@ -1,13 +1,14 @@
 import React, { PropTypes } from 'react';
 import { Field } from 'redux-form';
+import defaultValueEnhancer from './default-value-enhancer';
 
 export default (RebassComponent) => {
-  const Component = ({ input: { onChange, ...inputProps }, originalProps }) =>
+  const Component = defaultValueEnhancer(({ input: { onChange, ...inputProps }, originalProps }) =>
     <RebassComponent
       onChange={(e) => { onChange(e.target.value); }}
       {...inputProps}
       {...originalProps}
-    />;
+    />);
 
   Component.propTypes = {
     input: PropTypes.shape({

@@ -12,14 +12,26 @@ export const isCollaborator = (token, login) =>
     .then(R.T)
     .catch(R.F);
 
-export const submitIssue = (token, title, type, platform, description) =>
+export const submitIssue = (
+  token, title, type, audience, priority, platform, description,
+) =>
   githubRequest(token, `repos/${OWNER}/${REPO}/issues`, 'POST', {
     title,
-    labels: [type],
     body: `
-**Platform**: ${platform}
+## Type:
+${type}
 
-**Description**: ${description}`,
+## Audience:
+${audience}
+
+## Priority:
+${priority}
+
+## Platform:
+${platform}
+
+## Description:
+${description}`,
   });
 
 export const getUserInfo = token => getUser(token)

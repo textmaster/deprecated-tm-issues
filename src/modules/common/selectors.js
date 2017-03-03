@@ -30,13 +30,27 @@ const stepValidators = {
     [formValuesSelector],
     isPropLongerThan('type', 0),
   ),
+  [STEPS.AUDIENCE]: createSelector(
+    [formValuesSelector],
+    isPropLongerThan('audience', 0),
+  ),
+  [STEPS.PRIORITY]: createSelector(
+    [formValuesSelector],
+    isPropLongerThan('priority', 0),
+  ),
   [STEPS.PLATFORM]: createSelector(
     [formValuesSelector],
     isPropLongerThan('platform', 0),
   ),
   [STEPS.DESCRIPTION]: createSelector(
-    [formValuesSelector],
-    isPropLongerThan('description', 14),
+    [formValuesSelector], ({ description = '' }) => description
+      .replace(/\n/g, '')
+      .replace(/### /g, '')
+      .replace('Expected behaviour', '')
+      .replace('Current behaviour', '')
+      .replace('Possible solution', '')
+      .replace('Steps to reproduce', '')
+      .length > 30,
   ),
   [STEPS.SEND]: isIssuePostedSelector,
 };

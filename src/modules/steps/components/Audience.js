@@ -3,8 +3,8 @@ import { ButtonsGroup } from 'custom-components';
 
 export default () =>
   <ButtonsGroup
-    mt={2}
-    options={['Chrome', 'Firefox', 'IE', 'Edge', 'Other']}
-    name="platform"
-    defaultValue="Chrome"
+    my={2}
+    options={['Author', 'Client', 'Admin', 'Api', 'Prod', 'Marketing']}
+    name="audience"
   />;
+

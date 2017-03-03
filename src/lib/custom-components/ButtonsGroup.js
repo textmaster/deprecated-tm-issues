@@ -2,13 +2,14 @@ import R from 'ramda';
 import React, { PropTypes } from 'react';
 import { Button, ButtonOutline, Container } from 'rebass';
 import { Field } from 'redux-form';
+import defaultValueEnhancer from './default-value-enhancer';
 
 const selectedProps = {
   color: 'white',
   inverted: true,
 };
 
-const ButtonsGroup = ({
+const ButtonsGroup = defaultValueEnhancer(({
   input: { onChange, value },
   originalProps: { options, disabled = false, ...otherProps },
 }) =>
@@ -38,7 +39,7 @@ const ButtonsGroup = ({
 
       return <Component key={key} {...props} >{displayValue}</Component>;
     })}
-  </Container>;
+  </Container>);
 
 ButtonsGroup.propTypes = {
   input: PropTypes.shape({
@@ -46,8 +47,8 @@ ButtonsGroup.propTypes = {
     value: PropTypes.string,
   }).isRequired,
   originalProps: PropTypes.shape({
-    options: PropTypes.oneOf([
-      PropTypes.arrayOf(PropTypes.string).isRequired,
+    options: PropTypes.oneOfType([
+      PropTypes.arrayOf(PropTypes.string),
       PropTypes.arrayOf(PropTypes.shape({
         key: PropTypes.string.isRequired,
         displayValue: PropTypes.string.isRequired,
@@ -56,6 +57,7 @@ ButtonsGroup.propTypes = {
     disabled: PropTypes.bool,
   }).isRequired,
 };
+
 
 const FormButtonsGroup = props =>
   <Field component={ButtonsGroup} name={props.name} originalProps={props} />;

@@ -8,12 +8,14 @@ import { tokenSelector } from 'common/selectors';
 const goToUrl = (url) => { window.location.href = url; };
 
 function* submit(action) {
-  const { payload: { title, type, platform, description } } = action;
+  const { payload:
+    { title, type, audience, priority, platform, description },
+  } = action;
   const token = yield select(tokenSelector);
 
   const { type: actionType, payload: { html_url: issueUrl } } = yield call(
     requestSequence,
-    [submitIssue, token, title, type, platform, description],
+    [submitIssue, token, title, type, audience, priority, platform, description],
     'form',
     action,
   );

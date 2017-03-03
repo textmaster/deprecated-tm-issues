@@ -7,5 +7,19 @@ export default () =>
     hideLabel
     my={2}
     name="description"
-    placeholder="What is the issue about? Is it a bug, how can we reproduce it?"
+    rows="12"
+    defaultValue={
+`### Expected behaviour
+
+
+### Current behaviour
+
+
+### Possible solution
+
+
+### Steps to reproduce
+
+
+`}
   />;
