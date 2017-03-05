@@ -28,3 +28,5 @@ export function* requestSequence(callFn, requestId, originalAction) {
     }
   }
 }
+
+export default [];

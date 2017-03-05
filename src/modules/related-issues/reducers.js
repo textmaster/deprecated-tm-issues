@@ -1,4 +1,4 @@
-import { REQUEST } from 'request-helpers/actions';
+import { REQUEST } from 'requests/actions';
 
 // null indicates that no search has been performed, an empty array on the
 // otther hand indicates that no results came back after performing a search

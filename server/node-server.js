@@ -14,6 +14,7 @@ app.use(compression());
 nodeAppServer(app);
 
 const start = () => app.listen(PORT, err => (err ?
+  /* eslint-disable no-console */
   console.error(err) :
   console.log(`Listening on port ${PORT}`)
 ));

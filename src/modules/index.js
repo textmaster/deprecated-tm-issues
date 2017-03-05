@@ -1,9 +1,13 @@
-import * as common from './common';
+import * as context from './context';
+import * as formIssue from './form-issue';
 import * as relatedIssues from './related-issues';
-import * as steps from './steps';
+import * as requests from './requests';
+import * as session from './session';
 
 export default [
-  common,
+  context,
+  formIssue,
   relatedIssues,
-  steps,
+  requests,
+  session,
 ];

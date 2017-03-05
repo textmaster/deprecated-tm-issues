@@ -24,3 +24,4 @@ export const STEPS_TITLES = Object.freeze({
   [STEPS.DESCRIPTION]: 'Description',
   [STEPS.SEND]: 'Submit Issue',
 });
+

@@ -1,9 +1,10 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { compose, branch, renderNothing, withProps } from 'recompose';
+import { compose, branch, renderNothing, withHandlers, withProps } from 'recompose';
+import { reduxForm } from 'redux-form';
 import { createStructuredSelector } from 'reselect';
-import { currentStepSelector } from 'common/selectors';
-import { STEPS, STEPS_ORDER, STEPS_TITLES } from 'common/constants';
+import { currentStepSelector } from './selectors';
+import { STEPS, STEPS_ORDER, STEPS_TITLES } from './constants';
 
 import StepWrapper from './components/StepWrapper';
 
@@ -44,4 +45,7 @@ const steps = STEPS_ORDER
     );
   });
 
-export default () => <div>{steps}</div>;
+export default compose(
+  reduxForm({ form: 'issue' }),
+  withHandlers({ onSubmitIssue: () => (e) => { e.preventDefault(); } }),
+)(({ onSubmitIssue }) => <form onSubmit={onSubmitIssue}>{steps}</form>);

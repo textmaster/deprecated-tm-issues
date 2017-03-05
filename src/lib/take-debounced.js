@@ -13,7 +13,7 @@ export default function* takeDebounced(
   getTaskIdentifier = action => action.type,
 ) {
   const tasks = {};
-  while (true) {
+  for (;;) {
     const action = yield take(takePattern);
     const taskId = getTaskIdentifier(action);
     const task = tasks[taskId];

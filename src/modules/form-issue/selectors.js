@@ -2,13 +2,8 @@ import R from 'ramda';
 import { createSelector } from 'reselect';
 import { STEPS, STEPS_ORDER } from './constants';
 
-export const erroredRequestsSelector = R.prop('erroredRequests');
-export const ongoingRequestsSelector = R.prop('ongoingRequests');
-
-export const userInfoSelector = R.prop('userInfo');
-export const tokenSelector = R.path(['userInfo', 'token']);
-export const serverValuesSelector = R.prop('serverValues');
 export const formValuesSelector = R.pathOr({}, ['form', 'issue', 'values']);
+export const userInfoSelector = R.prop('userInfo');
 export const isIssuePostedSelector = R.prop('isIssuePosted');
 
 export const isUserCollaboratorSelector = createSelector(

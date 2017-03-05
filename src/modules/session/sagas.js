@@ -1,10 +1,9 @@
 import { call, select, takeEvery } from 'redux-saga/effects';
-
 import { getUserInfo } from 'api';
-import { requestSequence } from 'request-helpers/sagas';
-import { REQUEST } from 'request-helpers/actions';
-import { USER } from 'common/actions';
-import { serverValuesSelector } from 'common/selectors';
+import { accessTokenSelector, targetRepoSelector } from 'context/selectors';
+import { requestSequence } from 'requests/sagas';
+import { REQUEST } from 'requests/actions';
+import { SESSION } from './actions';
 
 const getTokenFromLocalStorage = () =>
   window.localStorage.getItem('token');
@@ -18,7 +17,7 @@ const clearTokenFromLocalStorage = () => {
 };
 
 function* handleInit() {
-  let { accessToken: token } = yield select(serverValuesSelector);
+  let token = yield select(accessTokenSelector);
   if (token) {
     window.history.replaceState(null, 'root', '/');
   } else {
@@ -26,7 +25,7 @@ function* handleInit() {
   }
 
   if (token) {
-    const { targetRepo } = yield select(serverValuesSelector);
+    const targetRepo = yield select(targetRepoSelector);
     const { type } = yield call(
       requestSequence,
       [getUserInfo, token, targetRepo],
@@ -42,7 +41,8 @@ function* handleInit() {
 }
 
 function* logoutWatcher() {
-  yield takeEvery(USER.LOGOUT_REQUESTED, clearTokenFromLocalStorage);
+  yield takeEvery(SESSION.LOGOUT_REQUESTED, clearTokenFromLocalStorage);
 }
 
 export default [handleInit, logoutWatcher];
+
