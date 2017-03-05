@@ -1,12 +1,14 @@
 const path = require('path');
 const webpack = require('webpack');
 const HtmlWebPackPlugin = require('html-webpack-plugin');
+const CleanWebpackPlugin = require('clean-webpack-plugin');
 
 const nodeEnv = process.env.NODE_ENV;
 const isProd = nodeEnv === 'production';
 const devSvrPort = process.env.DEV_SVR_PORT || 9999;
 
 const commonPlugins = [
+  new CleanWebpackPlugin(['./public/dist']),
   new webpack.optimize.CommonsChunkPlugin({
     name: 'vendor',
     minChunks: module =>
@@ -16,8 +18,6 @@ const commonPlugins = [
   new webpack.DefinePlugin({
     'process.env': {
       NODE_ENV: JSON.stringify(nodeEnv),
-      GITHUB_REPO_OWNER: JSON.stringify(process.env.GITHUB_REPO_OWNER),
-      GITHUB_REPO_NAME: JSON.stringify(process.env.GITHUB_REPO_NAME),
     },
   }),
   new webpack.NamedModulesPlugin(),

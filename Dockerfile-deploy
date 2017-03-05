@@ -1,0 +1,9 @@
+FROM mhart/alpine-node:base-7.7
+
+ADD ./tmp/app.tgz /
+
+WORKDIR /opt/app
+
+EXPOSE 8080
+
+CMD ["node", "./server/node-server.js"]

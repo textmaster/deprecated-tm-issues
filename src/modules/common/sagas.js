@@ -1,10 +1,10 @@
-import R from 'ramda';
 import { call, select, takeEvery } from 'redux-saga/effects';
 
 import { getUserInfo } from 'api';
 import { requestSequence } from 'request-helpers/sagas';
 import { REQUEST } from 'request-helpers/actions';
 import { USER } from 'common/actions';
+import { serverValuesSelector } from 'common/selectors';
 
 const getTokenFromLocalStorage = () =>
   window.localStorage.getItem('token');
@@ -18,7 +18,7 @@ const clearTokenFromLocalStorage = () => {
 };
 
 function* handleInit() {
-  let token = yield select(R.path(['serverValues', 'accessToken']));
+  let { accessToken: token } = yield select(serverValuesSelector);
   if (token) {
     window.history.replaceState(null, 'root', '/');
   } else {
@@ -26,9 +26,10 @@ function* handleInit() {
   }
 
   if (token) {
+    const { targetRepo } = yield select(serverValuesSelector);
     const { type } = yield call(
       requestSequence,
-      [getUserInfo, token],
+      [getUserInfo, token, targetRepo],
       'userInfo',
       { type: '@@INIT' },
     );

@@ -17,6 +17,7 @@ const devSvrPort = process.env.DEV_SVR_PORT || 9999;
 const assetsPath = path.join(__dirname, '../public/assets');
 const distPath = path.join(__dirname, '../public/dist');
 const clientId = process.env.GITHUB_CLIENT_ID;
+const targetRepo = process.env.GITHUB_TARGET_REPO;
 
 const authUrl = github.auth.config({
   id: clientId,
@@ -33,7 +34,10 @@ const sendIndex = (res, accessToken) => getPageTemplate()
     initialState: `
       <script>
         window.INITIAL_STATE = ${JSON.stringify({
-          authUrl, accessToken, clientId,
+          authUrl,
+          accessToken,
+          clientId,
+          targetRepo,
         })};
       </script>`,
   }))

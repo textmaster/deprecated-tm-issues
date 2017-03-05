@@ -3,14 +3,15 @@ import { call, select } from 'redux-saga/effects';
 import takeDebounced from 'take-debounced';
 import { requestSequence } from 'request-helpers/sagas';
 import { getRelatedIssues } from 'api';
-import { tokenSelector } from 'common/selectors';
+import { tokenSelector, serverValuesSelector } from 'common/selectors';
 
 function* pullRelatedIssues(action) {
   const { payload: title } = action;
   const token = yield select(tokenSelector);
+  const { targetRepo } = yield select(serverValuesSelector);
   yield call(
     requestSequence,
-    [getRelatedIssues, token, title],
+    [getRelatedIssues, token, targetRepo, title],
     'relatedIssues',
     action,
   );
