@@ -10,6 +10,5 @@ export default () =>
       { key: 'high', displayValue: 'I need a hero' },
     ]}
     name="priority"
-    defaultValue="normal"
   />;
 

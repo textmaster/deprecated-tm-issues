@@ -6,5 +6,4 @@ export default () =>
     mt={2}
     options={['Chrome', 'Firefox', 'IE', 'Edge', 'Other']}
     name="platform"
-    defaultValue="Chrome"
   />;
