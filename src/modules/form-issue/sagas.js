@@ -1,9 +1,10 @@
 import { takeLatest, call, select } from 'redux-saga/effects';
 import { submitIssue } from 'api';
-import { REQUEST } from 'request-helpers/actions';
-import { requestSequence } from 'request-helpers/sagas';
-import { FORM } from 'common/actions';
-import { tokenSelector, serverValuesSelector } from 'common/selectors';
+import { REQUEST } from 'requests/actions';
+import { requestSequence } from 'requests/sagas';
+import { tokenSelector } from 'session/selectors';
+import { targetRepoSelector } from 'context/selectors';
+import { FORM } from './actions';
 
 const goToUrl = (url) => { window.location.href = url; };
 
@@ -12,12 +13,12 @@ function* submit(action) {
     { title, type, audience, priority, platform, description },
   } = action;
   const token = yield select(tokenSelector);
-  const { targetRepo } = yield select(serverValuesSelector);
+  const targetRepo = yield select(targetRepoSelector);
 
   const { type: actionType, payload: { html_url: issueUrl } } = yield call(
     requestSequence,
     [submitIssue, token, targetRepo, title, type, audience, priority, platform, description],
-    'form',
+    'form-issue',
     action,
   );
 

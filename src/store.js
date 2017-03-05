@@ -22,7 +22,7 @@ export default (reducer) => {
   const store = compose(
     applyMiddleware(...getMiddlewares()),
     ...getEnhancers(),
-  )(createStore)(reducer, { serverValues: window.INITIAL_STATE });
+  )(createStore)(reducer);
   store.runSaga = sagaMiddleware.run;
   return store;
 };

@@ -33,10 +33,9 @@ const sendIndex = (res, accessToken) => getPageTemplate()
     filesPrefix: isProd ? '/dist' : `http://127.0.0.1:${devSvrPort}/assets`,
     initialState: `
       <script>
-        window.INITIAL_STATE = ${JSON.stringify({
+        window.CONTEXT = ${JSON.stringify({
           authUrl,
           accessToken,
-          clientId,
           targetRepo,
         })};
       </script>`,

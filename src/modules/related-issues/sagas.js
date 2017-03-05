@@ -1,14 +1,15 @@
 import R from 'ramda';
 import { call, select } from 'redux-saga/effects';
 import takeDebounced from 'take-debounced';
-import { requestSequence } from 'request-helpers/sagas';
+import { requestSequence } from 'requests/sagas';
 import { getRelatedIssues } from 'api';
-import { tokenSelector, serverValuesSelector } from 'common/selectors';
+import { targetRepoSelector } from 'context/selectors';
+import { tokenSelector } from 'session/selectors';
 
 function* pullRelatedIssues(action) {
   const { payload: title } = action;
   const token = yield select(tokenSelector);
-  const { targetRepo } = yield select(serverValuesSelector);
+  const targetRepo = yield select(targetRepoSelector);
   yield call(
     requestSequence,
     [getRelatedIssues, token, targetRepo, title],
