@@ -19,6 +19,7 @@
     "lodash.template": "^4.4.0",
     "octonode": "^0.7.9",
     "ramda": "^0.23.0",
+    "smoothscroll": "^0.3.0",
     "throng": "^4.0.0"
   },
   "devDependencies": {
