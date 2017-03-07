@@ -3,6 +3,8 @@ import { FormInput } from 'custom-components';
 
 export default () =>
   <FormInput
+    autoOff
+    hideLabel
     label=""
     my={2}
     name="title"
