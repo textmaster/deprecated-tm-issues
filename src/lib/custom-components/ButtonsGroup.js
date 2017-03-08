@@ -37,7 +37,7 @@ const ButtonsGroup = defaultValueEnhancer(({
 
       const Component = isSelected ? Button : ButtonOutline;
 
-      return <Component key={key} {...props} >{displayValue}</Component>;
+      return <Component key={key} {...props} type="button" >{displayValue}</Component>;
     })}
   </Container>);
 

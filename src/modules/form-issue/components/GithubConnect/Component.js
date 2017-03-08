@@ -25,9 +25,13 @@ const Component = ({ state, authUrl, name, onLogout }) =>
         state === STATES.AUTHORIZED ? 'success' :
                                       'primary'
       }
+      type="button"
     >{getMessage(state, name)}</Button>
     <Space x={3} />
-    {state !== STATES.DISCONNECTED ? <Button onClick={onLogout}>Logout</Button> : null}
+    {state !== STATES.DISCONNECTED ?
+      <Button onClick={onLogout} type="button">Logout</Button> :
+      null
+    }
   </div>;
 
 Component.defaultProps = { name: undefined };

@@ -1,8 +1,10 @@
+import R from 'ramda';
 import React from 'react';
 import { connect } from 'react-redux';
-import { compose, branch, renderNothing, withHandlers, withProps } from 'recompose';
+import { compose, mapProps, withProps } from 'recompose';
 import { reduxForm } from 'redux-form';
 import { createStructuredSelector } from 'reselect';
+import renderNothingIf from 'render-nothing-if';
 import { currentStepSelector } from './selectors';
 import { STEPS, STEPS_ORDER, STEPS_TITLES } from './constants';
 
@@ -22,11 +24,7 @@ const innerStepsComponents = {
 
 const getStepWrapperContainer = componentIndex => compose(
   connect(createStructuredSelector({ currentStep: currentStepSelector })),
-  branch(
-    ({ currentStep }) => currentStep >= componentIndex,
-    Component => props => <Component {...props} />,
-    renderNothing,
-  ),
+  renderNothingIf(R.propSatisfies(R.gt(componentIndex), 'currentStep')),
   withProps(({ currentStep }) => ({ isSuccess: currentStep > componentIndex })),
 )(StepWrapper);
 
@@ -47,5 +45,5 @@ const steps = STEPS_ORDER
 
 export default compose(
   reduxForm({ form: 'issue' }),
-  withHandlers({ onSubmitIssue: () => (e) => { e.preventDefault(); } }),
-)(({ onSubmitIssue }) => <form onSubmit={onSubmitIssue}>{steps}</form>);
+  mapProps(R.always(({ children: steps }))),
+)('form');

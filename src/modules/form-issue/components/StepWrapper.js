@@ -8,7 +8,12 @@ const Component = ({ title, isSuccess, children }) =>
     <Heading mb={2} level={2}>
       {title}
       <Space x={2} />
-      {isSuccess ? <Base style={{ display: 'inline' }} color="success"><Icon name="check" /></Base> : null}
+      {isSuccess ?
+        <Base style={{ display: 'inline' }} color="success">
+          <Icon name="check" />
+        </Base> :
+        null
+      }
     </Heading>
     {children}
   </Container>;
