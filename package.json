@@ -11,6 +11,7 @@
   "description": "Post Github issues with ease",
   "main": "index.js",
   "dependencies": {
+    "babel-plugin-ramda": "^1.1.9",
     "clean-webpack-plugin": "^0.1.15",
     "compression": "^1.6.2",
     "denodeify": "^1.2.1",
