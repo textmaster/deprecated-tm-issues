@@ -437,6 +437,12 @@ babel-plugin-module-resolver@^2.5.0:
     glob "^7.1.1"
     resolve "^1.2.0"
 
+babel-plugin-ramda@^1.1.9:
+  version "1.1.9"
+  resolved "https://registry.yarnpkg.com/babel-plugin-ramda/-/babel-plugin-ramda-1.1.9.tgz#8b501f4a2759c345306bdd018de217bea3b88aeb"
+  dependencies:
+    ramda "^0.19.1"
+
 babel-plugin-syntax-async-functions@^6.8.0:
   version "6.13.0"
   resolved "https://registry.yarnpkg.com/babel-plugin-syntax-async-functions/-/babel-plugin-syntax-async-functions-6.13.0.tgz#cad9cad1191b5ad634bf30ae0872391e0647be95"
@@ -3434,6 +3440,10 @@ querystring@0.2.0:
 querystringify@0.0.x:
   version "0.0.4"
   resolved "https://registry.yarnpkg.com/querystringify/-/querystringify-0.0.4.tgz#0cf7f84f9463ff0ae51c4c4b142d95be37724d9c"
+
+ramda@^0.19.1:
+  version "0.19.1"
+  resolved "https://registry.yarnpkg.com/ramda/-/ramda-0.19.1.tgz#89c4ad697265ff6b1face9f286439e2520d6679c"
 
 ramda@^0.23.0:
   version "0.23.0"

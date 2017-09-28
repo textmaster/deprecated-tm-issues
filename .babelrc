@@ -8,6 +8,7 @@
     },
   },
   plugins: [
+    "ramda",
     "syntax-trailing-function-commas",
     ["module-resolver", {
       "root": ["./src/lib", "./src/modules"],
