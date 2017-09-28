@@ -56,5 +56,6 @@ const processCallback = (req, res, next) => {
 module.exports = (app) => {
   app.use('/assets', express.static(assetsPath));
   app.use('/dist', express.static(distPath));
+  app.get('/health', (req, res) => res.send({ status: 'ok' }));
   app.get('*', processCallback);
 };
