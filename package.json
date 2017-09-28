@@ -67,8 +67,8 @@
     "start": "yarn run webpack-server | yarn run dev-server",
     "heroku-postbuild": "yarn run build",
     "webpack-server": "NODE_ENV=development webpack-dev-server",
-    "dev-server": "NODE_ENV=development node ./server/node-server",
-    "prod-server": "NODE_ENV=production node ./server/node-server",
+    "dev-server": "NODE_ENV=development yarn run server",
+    "server": "node ./server/node-server",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Josep M Sobrepere",
