@@ -14,7 +14,7 @@ export const submitIssue = (
 ) =>
   githubRequest(token, `repos/${targetRepo}/issues`, 'POST', {
     title,
-    labels: [type, priority],
+    labels: ['a:production', type, priority],
     body: `
 ## Platform:
 ${platform}
