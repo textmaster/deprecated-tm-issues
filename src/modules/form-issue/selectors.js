@@ -25,10 +25,6 @@ const stepValidators = {
     [formValuesSelector],
     isPropLongerThan('type', 0),
   ),
-  [STEPS.AUDIENCE]: createSelector(
-    [formValuesSelector],
-    isPropLongerThan('audience', 0),
-  ),
   [STEPS.PRIORITY]: createSelector(
     [formValuesSelector],
     isPropLongerThan('priority', 0),

@@ -14,7 +14,6 @@ import StepWrapper from './components/StepWrapper';
 const innerStepsComponents = {
   [STEPS.CONNECT]: require('./components/GithubConnect').default,
   [STEPS.TITLE]: require('./components/Title').default,
-  [STEPS.AUDIENCE]: require('./components/Audience').default,
   [STEPS.PRIORITY]: require('./components/Priority').default,
   [STEPS.TYPE]: require('./components/Type').default,
   [STEPS.PLATFORM]: require('./components/Platform').default,

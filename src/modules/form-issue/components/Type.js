@@ -5,8 +5,9 @@ export default () =>
   <ButtonsGroup
     my={2}
     options={[
-      'Bug', 'Enhancement', 'Feature Request',
-      'Design', 'UX', 'Question', 'Chore',
+      { key: 't:bug', displayValue: 'Bug' },
+      { key: 't:question', displayValue: 'Question' },
+      { key: 't:improvement', displayValue: 'Improvement' },
     ]}
     name="type"
   />;

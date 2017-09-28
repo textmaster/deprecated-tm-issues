@@ -10,20 +10,12 @@ const isCollaborator = (token, targetRepo, login) =>
     .catch(R.F);
 
 export const submitIssue = (
-  token, targetRepo, title, type, audience, priority, platform, description,
+  token, targetRepo, title, type, priority, platform, description,
 ) =>
   githubRequest(token, `repos/${targetRepo}/issues`, 'POST', {
     title,
+    labels: [type, priority],
     body: `
-## Type:
-${type}
-
-## Audience:
-${audience}
-
-## Priority:
-${priority}
-
 ## Platform:
 ${platform}
 
