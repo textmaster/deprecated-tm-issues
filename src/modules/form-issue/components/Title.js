@@ -9,5 +9,5 @@ export default () =>
     my={2}
     name="title"
     type="text"
-    placeholder="eg, 'Can not link segments with keys'"
+    placeholder="eg, 'Cannot launch project TR-4B8-35802'"
   />;
